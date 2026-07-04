@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/weather";
+const API =
+  "https://weather-dashboard-lnoh.onrender.com/api/weather";
 
 export const getWeather = async (city) => {
   const response = await axios.get(`${API}?city=${city}`);
