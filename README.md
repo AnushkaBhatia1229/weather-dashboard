@@ -36,7 +36,9 @@ https://weather-dashboard-lnoh.onrender.com
 
 ### Home Page
 
-> Add your dashboard screenshot here.
+<img width="1920" height="1200" alt="Screenshot (1160)" src="https://github.com/user-attachments/assets/86f3ecc8-f2b2-4206-8311-2970e45c13b0" />
+<img width="1920" height="1200" alt="Screenshot (1161)" src="https://github.com/user-attachments/assets/9e3ae7a3-722a-450d-894a-f8f22f550cd6" />
+
 
 ---
 
