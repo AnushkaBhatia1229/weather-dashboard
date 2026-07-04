@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Poppins,sans-serif;
+}
+
+html,
+body,
+#root{
+  width:100%;
+  min-height:100vh;
+}
+
+body{
+  background:linear-gradient(-45deg,#0f172a,#1e3a8a,#2563eb,#38bdf8);
+  background-size:400% 400%;
+  animation:gradientBG 15s ease infinite;
+  color:white;
+}
+
+@keyframes gradientBG{
+  0%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#38bdf8;
+  border-radius:20px;
+}
