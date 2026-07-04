@@ -1,14 +1,36 @@
 import axios from "axios";
 
-const API =
-  "https://weather-dashboard-lnoh.onrender.com/api/weather";
+// 👇 Apna Render Backend URL
+const API = "https://weather-dashboard-lnoh.onrender.com/api";
 
+// Current Weather
 export const getWeather = async (city) => {
-  const response = await axios.get(`${API}?city=${city}`);
-  return response.data;
+  try {
+    const response = await axios.get(`${API}/weather`, {
+      params: {
+        city,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
+// 5-Day Forecast
 export const getForecast = async (city) => {
-  const response = await axios.get(`${API}/forecast?city=${city}`);
-  return response.data;
+  try {
+    const response = await axios.get(`${API}/weather/forecast`, {
+      params: {
+        city,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };

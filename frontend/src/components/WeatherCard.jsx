@@ -2,131 +2,131 @@ import {
   FaTemperatureHigh,
   FaTint,
   FaWind,
-  FaEye,
-  FaCloud,
-  FaMapMarkerAlt,
+  FaCompressAlt,
 } from "react-icons/fa";
 
 const WeatherCard = ({ weather }) => {
   if (!weather) return null;
 
+  const today = new Date().toLocaleDateString("en-IN", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
   return (
-    <div className="w-full">
+    <div className="weather-card">
 
-      <div className="relative overflow-hidden rounded-[35px] border border-white/20 bg-white/10 backdrop-blur-3xl shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-8">
+      {/* Left Side */}
 
-        {/* Glow */}
+      <div className="left">
 
-        <div className="absolute -top-20 -right-20 w-60 h-60 bg-cyan-400/20 rounded-full blur-3xl"></div>
+        <img
+          src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
+          alt="weather"
+        />
 
-        {/* Location */}
+        <div>
 
-        <div className="relative flex justify-between items-center">
+          <h2 className="city">
+            {weather.name}, {weather.sys.country}
+          </h2>
 
-          <div>
+          <p className="date">
+            {today}
+          </p>
 
-            <div className="flex items-center gap-2 text-gray-200">
+          <h1 className="temp">
+            {Math.round(weather.main.temp)}°
+          </h1>
 
-              <FaMapMarkerAlt className="text-red-400" />
-
-              <span className="text-lg">
-                {weather.name}, {weather.sys.country}
-              </span>
-
-            </div>
-
-            <h2 className="text-6xl font-bold text-white mt-3">
-              {Math.round(weather.main.temp)}°
-            </h2>
-
-            <p className="capitalize text-cyan-200 text-xl mt-2">
-              {weather.weather[0].description}
-            </p>
-
-          </div>
-
-          <img
-            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
-            alt="weather"
-            className="w-44 h-44 drop-shadow-2xl animate-pulse"
-          />
+          <p className="desc">
+            {weather.weather[0].description}
+          </p>
 
         </div>
 
-        {/* Divider */}
+      </div>
 
-        <div className="border-t border-white/10 my-8"></div>
+      {/* Right Side */}
 
-        {/* Weather Details */}
+      <div className="right">
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
+        <div className="info-card">
 
-          <div className="bg-white/10 rounded-2xl p-5 text-center hover:bg-white/20 transition">
+          <FaTemperatureHigh
+            className="info-icon"
+          />
 
-            <FaTemperatureHigh className="mx-auto text-3xl text-orange-400 mb-3" />
+          <div>
 
-            <p className="text-sm text-gray-300">
+            <p className="info-title">
               Feels Like
             </p>
 
-            <h3 className="text-xl font-bold text-white">
+            <h3 className="info-value">
               {Math.round(weather.main.feels_like)}°C
             </h3>
 
           </div>
 
-          <div className="bg-white/10 rounded-2xl p-5 text-center hover:bg-white/20 transition">
+        </div>
 
-            <FaTint className="mx-auto text-3xl text-cyan-300 mb-3" />
+        <div className="info-card">
 
-            <p className="text-sm text-gray-300">
+          <FaTint
+            className="info-icon"
+          />
+
+          <div>
+
+            <p className="info-title">
               Humidity
             </p>
 
-            <h3 className="text-xl font-bold text-white">
+            <h3 className="info-value">
               {weather.main.humidity}%
             </h3>
 
           </div>
 
-          <div className="bg-white/10 rounded-2xl p-5 text-center hover:bg-white/20 transition">
+        </div>
 
-            <FaWind className="mx-auto text-3xl text-green-300 mb-3" />
+        <div className="info-card">
 
-            <p className="text-sm text-gray-300">
-              Wind
+          <FaWind
+            className="info-icon"
+          />
+
+          <div>
+
+            <p className="info-title">
+              Wind Speed
             </p>
 
-            <h3 className="text-xl font-bold text-white">
+            <h3 className="info-value">
               {weather.wind.speed} m/s
             </h3>
 
           </div>
 
-          <div className="bg-white/10 rounded-2xl p-5 text-center hover:bg-white/20 transition">
+        </div>
 
-            <FaEye className="mx-auto text-3xl text-purple-300 mb-3" />
+        <div className="info-card">
 
-            <p className="text-sm text-gray-300">
-              Visibility
+          <FaCompressAlt
+            className="info-icon"
+          />
+
+          <div>
+
+            <p className="info-title">
+              Pressure
             </p>
 
-            <h3 className="text-xl font-bold text-white">
-              {weather.visibility / 1000} km
-            </h3>
-
-          </div>
-
-          <div className="bg-white/10 rounded-2xl p-5 text-center hover:bg-white/20 transition">
-
-            <FaCloud className="mx-auto text-3xl text-gray-200 mb-3" />
-
-            <p className="text-sm text-gray-300">
-              Clouds
-            </p>
-
-            <h3 className="text-xl font-bold text-white">
-              {weather.clouds.all}%
+            <h3 className="info-value">
+              {weather.main.pressure} hPa
             </h3>
 
           </div>

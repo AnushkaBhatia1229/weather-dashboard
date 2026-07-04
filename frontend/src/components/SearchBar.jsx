@@ -9,29 +9,41 @@ const SearchBar = ({ onSearch }) => {
 
     if (!city.trim()) return;
 
-    onSearch(city);
+    onSearch(city.trim());
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="w-full flex items-center gap-4 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-4 shadow-2xl"
-    >
-      <FaMapMarkerAlt className="text-cyan-300 text-xl" />
+    <form className="search-box" onSubmit={handleSubmit}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flex: 1,
+          gap: "15px",
+        }}
+      >
+        <FaMapMarkerAlt
+          size={28}
+          color="#1565ff"
+        />
 
-      <input
-        type="text"
-        placeholder="Search any city..."
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        className="flex-1 bg-transparent text-white placeholder:text-gray-300 text-lg outline-none"
-      />
+        <input
+          className="search-input"
+          type="text"
+          placeholder="Search any city..."
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+      </div>
 
       <button
+        className="search-btn"
         type="submit"
-        className="bg-gradient-to-r from-cyan-500 to-blue-600 px-7 py-3 rounded-2xl font-semibold text-white hover:scale-105 transition duration-300"
       >
-        <FaSearch />
+        <FaSearch
+          style={{ marginRight: "10px" }}
+        />
+        Search
       </button>
     </form>
   );
